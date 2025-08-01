@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexaTech Hub - Future Innovation Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --tech-blue: #00d4ff;
+            --tech-purple: #8b5cf6;
+            --tech-cyan: #06b6d4;
+            --tech-dark: #0f172a;
+            --tech-darker: #020617;
+            --tech-gray: #1e293b;
+            --hologram-blue: rgba(0, 212, 255, 0.8);
+            --hologram-purple: rgba(139, 92, 246, 0.8);
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--tech-darker) 0%, var(--tech-dark) 50%, #1a1a2e 100%);
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
+        .space-grotesk {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        /* Enhanced Glass Architecture */
+        .glass-surface {
+            background: linear-gradient(135deg, 
+                rgba(0, 212, 255, 0.12) 0%,
+                rgba(139, 92, 246, 0.08) 50%,
+                rgba(6, 182, 212, 0.12) 100%);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .glass-surface::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.2), 
+                transparent);
+            transition: left 1.8s ease;
+        }
+        
+        .glass-surface:hover::before {
+            left: 100%;
+        }
+        
+        .glass-surface:hover {
+            transform: translateY(-12px) scale(1.03);
+            border-color: rgba(0, 212, 255, 0.7);
+            box-shadow: 
+                0 30px 60px rgba(0, 212, 255, 0.25),
+                inset 0 0 40px rgba(0, 212, 255, 0.15);
+        }
+        
+        /* Interactive 3D Holographic Displays */
+        .holographic-display {
+            background: linear-gradient(135deg, 
+                rgba(0, 212, 255, 0.18) 0%,
+                rgba(139, 92, 246, 0.12) 30%,
+                rgba(6, 182, 212, 0.18) 70%,
+                transparent 100%);
+            border: 2px solid rgba(0, 212, 255, 0.5);
+            border-radius: 25px;
+            backdrop-filter: blur(35px);
+            -webkit-backdrop-filter: blur(35px);
+            position: relative;
+            overflow: hidden;
+            animation: hologram-flicker 10s ease-in-out infinite;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        
+        .holographic-display::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                transparent,
+                rgba(0, 212, 255, 0.15),
+                transparent,
+                rgba(139, 92, 246, 0.15),
+                transparent,
+                rgba(6, 182, 212, 0.15),
+                transparent
+            );
+            animation: holo-rotate 15s linear infinite;
+        }
+        
+        .holographic-display::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                transparent 30%, 
+                rgba(0, 212, 255, 0.1) 50%, 
+                transparent 70%);
+            animation: holo-scan 8s ease-in-out infinite;
+        }
+        
+        @keyframes holo-rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes holo-scan {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+        }
+        
+        @keyframes hologram-flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.97; }
+            51% { opacity: 1; }
+            52% { opacity: 0.99; }
+            53% { opacity: 1; }
+        }
+        
+        .holo-content {
+            position: relative;
+            z-index: 2;
+            transform-style: preserve-3d;
+        }
+        
+        /* 3D Rotating Animations */
+        .rotating-3d {
+            animation: rotate-3d 20s linear infinite;
+            transform-style: preserve-3d;
+        }
+        
+        @keyframes rotate-3d {
+            0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+            33% { transform: rotateX(360deg) rotateY(120deg) rotateZ(0deg); }
+            66% { transform: rotateX(0deg) rotateY(240deg) rotateZ(360deg); }
+            100% { transform: rotateX(0deg) rotateY(360deg) rotateZ(0deg); }
+        }
+        
+        /* Enhanced Network Background with Data Streams */
+        .network-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.8;
+        }
+        
+        .network-node {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--tech-blue);
+            border-radius: 50%;
+            box-shadow: 0 0 20px var(--tech-blue);
+            animation: pulse-node 5s ease-in-out infinite;
+        }
+        
+        .data-stream {
+            position: absolute;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                var(--tech-blue), 
+                var(--tech-purple), 
+                var(--tech-cyan), 
+                transparent);
+            animation: data-flow 8s linear infinite;
+            opacity: 0.7;
+            border-radius: 2px;
+        }
+        
+        .data-packet {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--tech-cyan);
+            border-radius: 50%;
+            box-shadow: 0 0 15px var(--tech-cyan);
+            animation: packet-travel 12s linear infinite;
+        }
+        
+        @keyframes pulse-node {
+            0%, 100% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(2.5); opacity: 1; box-shadow: 0 0 35px var(--tech-blue); }
+        }
+        
+        @keyframes data-flow {
+            0% { opacity: 0; transform: scaleX(0); }
+            25% { opacity: 0.9; transform: scaleX(0.7); }
+            50% { opacity: 1; transform: scaleX(1); }
+            75% { opacity: 0.9; transform: scaleX(0.7); }
+            100% { opacity: 0; transform: scaleX(0); }
+        }
+        
+        @keyframes packet-travel {
+            0% { transform: translateX(0) scale(0); opacity: 0; }
+            10% { transform: translateX(50px) scale(1); opacity: 1; }
+            90% { transform: translateX(calc(100vw - 50px)) scale(1); opacity: 1; }
+            100% { transform: translateX(100vw) scale(0); opacity: 0; }
+        }
+        
+        /* Enhanced Floating Particles */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            filter: blur(0.3px);
+        }
+        
+        .particle-blue {
+            width: 5px;
+            height: 5px;
+            background: var(--tech-blue);
+            box-shadow: 0 0 20px var(--tech-blue);
+            animation: particle-float-blue 12s linear infinite;
+        }
+        
+        .particle-purple {
+            width: 4px;
+            height: 4px;
+            background: var(--tech-purple);
+            box-shadow: 0 0 18px var(--tech-purple);
+            animation: particle-float-purple 15s linear infinite;
+        }
+        
+        .particle-cyan {
+            width: 6px;
+            height: 6px;
+            background: var(--tech-cyan);
+            box-shadow: 0 0 22px var(--tech-cyan);
+            animation: particle-float-cyan 10s linear infinite;
+        }
+        
+        @keyframes particle-float-blue {
+            0% { transform: translateY(100vh) translateX(0) scale(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; transform: translateY(90vh) translateX(40px) scale(1) rotate(60deg); }
+            90% { opacity: 1; transform: translateY(-10vh) translateX(200px) scale(1.8) rotate(420deg); }
+            100% { transform: translateY(-20vh) translateX(300px) scale(0) rotate(480deg); opacity: 0; }
+        }
+        
+        @keyframes particle-float-purple {
+            0% { transform: translateY(100vh) translateX(0) scale(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; transform: translateY(90vh) translateX(-40px) scale(1) rotate(-60deg); }
+            90% { opacity: 1; transform: translateY(-10vh) translateX(-200px) scale(1.5) rotate(-420deg); }
+            100% { transform: translateY(-20vh) translateX(-300px) scale(0) rotate(-480deg); opacity: 0; }
+        }
+        
+        @keyframes particle-float-cyan {
+            0% { transform: translateY(100vh) translateX(0) scale(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; transform: translateY(90vh) translateX(80px) scale(1) rotate(120deg); }
+            90% { opacity: 1; transform: translateY(-10vh) translateX(-80px) scale(1.6) rotate(360deg); }
+            100% { transform: translateY(-20vh) translateX(0) scale(0) rotate(480deg); opacity: 0; }
+        }
+        
+        /* Neon Glowing Text and Icons */
+        .neon-text {
+            text-shadow: 
+                0 0 5px currentColor,
+                0 0 10px currentColor,
+                0 0 15px currentColor,
+                0 0 20px currentColor,
+                0 0 40px currentColor;
+            animation: neon-flicker 4s ease-in-out infinite alternate;
+        }
+        
+        .neon-icon {
+            filter: drop-shadow(0 0 10px currentColor) 
+                    drop-shadow(0 0 20px currentColor) 
+                    drop-shadow(0 0 30px currentColor);
+            animation: icon-glow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes neon-flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.96; }
+        }
+        
+        @keyframes icon-glow {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .text-tech-blue { color: var(--tech-blue); }
+        .text-tech-purple { color: var(--tech-purple); }
+        .text-tech-cyan { color: var(--tech-cyan); }
+        
+        /* Enhanced Tech Buttons with Ripple Effects */
+        .tech-btn {
+            background: linear-gradient(135deg, var(--tech-blue), var(--tech-purple));
+            border: none;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 800;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+        }
+        
+        .tech-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.5), 
+                transparent);
+            transition: left 1s ease;
+        }
+        
+        .tech-btn:hover::before {
+            left: 100%;
+        }
+        
+        .tech-btn:hover {
+            transform: translateY(-6px) scale(1.08);
+            box-shadow: 
+                0 25px 50px rgba(0, 212, 255, 0.6),
+                0 0 50px rgba(0, 212, 255, 0.8);
+        }
+        
+        /* Smooth Scrolling Navigation */
+        .nav-link {
+            position: relative;
+            transition: all 0.5s ease;
+            padding: 12px 20px;
+            border-radius: 10px;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--tech-blue), var(--tech-purple));
+            transition: all 0.5s ease;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .nav-link:hover::after {
+            width: 90%;
+        }
+        
+        .nav-link:hover {
+            color: var(--tech-blue);
+            text-shadow: 0 0 20px var(--tech-blue);
+            background: rgba(0, 212, 255, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        /* Mouse-Tracking Holographics */
+        .mouse-track {
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        /* Fade-in Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(80px);
+            transition: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-150px);
+            transition: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(150px);
+            transition: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        /* Translucent Surfaces */
+        .translucent-surface {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.5s ease;
+        }
+        
+        .translucent-surface:hover {
+            background: rgba(15, 23, 42, 0.8);
+            border-color: rgba(0, 212, 255, 0.5);
+        }
+        
+        /* Animated Progress Bars */
+        .progress-bar {
+            background: rgba(0, 212, 255, 0.2);
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            height: 10px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, 
+                var(--tech-blue), 
+                var(--tech-purple), 
+                var(--tech-cyan));
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            animation: progress-glow 4s ease-in-out infinite;
+        }
+        
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.7), 
+                transparent);
+            animation: progress-shine 3s ease-in-out infinite;
+        }
+        
+        @keyframes progress-shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        @keyframes progress-glow {
+            0%, 100% { box-shadow: 0 0 15px rgba(0, 212, 255, 0.6); }
+            50% { box-shadow: 0 0 25px rgba(0, 212, 255, 0.9); }
+        }
+        
+        /* Interactive Tech Cards */
+        .tech-card {
+            background: linear-gradient(135deg, 
+                rgba(15, 23, 42, 0.9) 0%,
+                rgba(30, 41, 59, 0.8) 100%);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tech-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(0, 212, 255, 0.08) 0%,
+                rgba(139, 92, 246, 0.08) 50%,
+                rgba(6, 182, 212, 0.08) 100%);
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+        
+        .tech-card:hover::after {
+            opacity: 1;
+        }
+        
+        .tech-card:hover {
+            transform: translateY(-18px) scale(1.05);
+            border-color: rgba(0, 212, 255, 0.7);
+            box-shadow: 
+                0 35px 70px rgba(0, 212, 255, 0.25),
+                0 0 50px rgba(0, 212, 255, 0.15);
+        }
+        
+        /* Floating Elements */
+        .floating {
+            animation: float 10s ease-in-out infinite;
+        }
+        
+        .floating:nth-child(2n) {
+            animation-delay: -3s;
+            animation-duration: 12s;
+        }
+        
+        .floating:nth-child(3n) {
+            animation-delay: -6s;
+            animation-duration: 11s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-30px) rotate(5deg); }
+            50% { transform: translateY(-20px) rotate(-3deg); }
+            75% { transform: translateY(-25px) rotate(3deg); }
+        }
+        
+        /* Stats Counter Animation */
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, 
+                var(--tech-blue), 
+                var(--tech-purple), 
+                var(--tech-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: stat-glow 5s ease-in-out infinite;
+        }
+        
+        @keyframes stat-glow {
+            0%, 100% { filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.6)); }
+            50% { filter: drop-shadow(0 0 25px rgba(0, 212, 255, 0.9)); }
+        }
+        
+        /* Architecture Elements */
+        .architecture-element {
+            position: absolute;
+            background: linear-gradient(135deg, 
+                rgba(0, 212, 255, 0.12) 0%,
+                rgba(139, 92, 246, 0.08) 100%);
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .stat-number {
+                font-size: 3rem;
+            }
+            
+            .network-node {
+                width: 6px;
+                height: 6px;
+            }
+            
+            .particle-blue, .particle-purple, .particle-cyan {
+                width: 4px;
+                height: 4px;
+            }
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--tech-darker);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--tech-blue), var(--tech-purple));
+            border-radius: 6px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(var(--tech-purple), var(--tech-cyan));
+        }
+        
+        /* Interactive Hover Effects */
+        .interactive-element {
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .interactive-element:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+    </style>
+</head>
+<body>
+    <!-- Enhanced Network Background with Data Streams -->
+    <div class="network-bg" id="networkBg"></div>
+    
+    <!-- Enhanced Floating Particles -->
+    <div id="particles"></div>
+    
+    <!-- Glass Architecture Elements -->
+    <div class="architecture-element w-40 h-80 top-16 left-8 rounded-2xl opacity-25"></div>
+    <div class="architecture-element w-32 h-60 top-32 right-16 rounded-2xl opacity-20"></div>
+    <div class="architecture-element w-48 h-40 bottom-24 left-1/4 rounded-2xl opacity-15"></div>
+    
+    <!-- Enhanced Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-surface border-b border-blue-400/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24">
+                <div class="flex items-center space-x-6">
+                    <div class="text-4xl font-black space-grotesk neon-text text-tech-blue">
+                        NexaTech
+                    </div>
+                    <div class="text-xl text-tech-purple font-bold space-grotesk neon-text">
+                        HUB
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex space-x-3">
+                    <a href="#home" class="nav-link text-gray-300 space-grotesk font-bold">Home</a>
+                    <a href="#innovation" class="nav-link text-gray-300 space-grotesk font-bold">Innovation</a>
+                    <a href="#technology" class="nav-link text-gray-300 space-grotesk font-bold">Technology</a>
+                    <a href="#community" class="nav-link text-gray-300 space-grotesk font-bold">Community</a>
+                    <a href="#future" class="nav-link text-gray-300 space-grotesk font-bold">Future</a>
+                </div>
+                
+                <button class="tech-btn px-12 py-5 rounded-2xl text-white font-black space-grotesk text-lg">
+                    Join Hub
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Enhanced Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="mb-24">
+                <h1 class="text-8xl md:text-10xl font-black mb-12 space-grotesk neon-text text-tech-blue">
+                    FUTURE
+                    <span class="text-tech-purple">TECH</span>
+                    <br>
+                    <span class="text-tech-cyan">NEXUS</span>
+                </h1>
+                <p class="text-3xl md:text-5xl text-gray-300 mb-20 max-w-6xl mx-auto leading-relaxed font-light">
+                    Where innovation transcends boundaries. Experience the convergence of 
+                    cutting-edge technology and visionary design in our interconnected digital ecosystem.
+                </p>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row gap-12 justify-center items-center mb-28">
+                <button class="tech-btn px-20 py-8 rounded-3xl text-3xl font-black space-grotesk">
+                    Explore Hub
+                </button>
+                <button class="border-4 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-slate-900 px-20 py-8 rounded-3xl transition-all duration-600 space-grotesk font-black text-3xl neon-text">
+                    Virtual Tour
+                </button>
+            </div>
+            
+            <!-- Enhanced Innovation Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-12 max-w-7xl mx-auto">
+                <div class="glass-surface rounded-4xl p-12 fade-in interactive-element mouse-track">
+                    <div class="stat-number mb-6">750+</div>
+                    <div class="text-gray-400 font-bold space-grotesk text-xl">Innovators</div>
+                    <div class="progress-bar mt-8">
+                        <div class="progress-fill" style="width: 98%"></div>
+                    </div>
+                </div>
+                <div class="glass-surface rounded-4xl p-12 fade-in interactive-element mouse-track">
+                    <div class="stat-number mb-6">100+</div>
+                    <div class="text-gray-400 font-bold space-grotesk text-xl">Tech Companies</div>
+                    <div class="progress-bar mt-8">
+                        <div class="progress-fill" style="width: 92%"></div>
+                    </div>
+                </div>
+                <div class="glass-surface rounded-4xl p-12 fade-in interactive-element mouse-track">
+                    <div class="stat-number mb-6">24/7</div>
+                    <div class="text-gray-400 font-bold space-grotesk text-xl">Collaboration</div>
+                    <div class="progress-bar mt-8">
+                        <div class="progress-fill" style="width: 100%"></div>
+                    </div>
+                </div>
+                <div class="glass-surface rounded-4xl p-12 fade-in interactive-element mouse-track">
+                    <div class="stat-number mb-6">∞</div>
+                    <div class="text-gray-400 font-bold space-grotesk text-xl">Possibilities</div>
+                    <div class="progress-bar mt-8">
+                        <div class="progress-fill" style="width: 100%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Enhanced Floating Tech Elements -->
+        <div class="absolute top-40 right-32 text-8xl opacity-80 floating neon-icon text-tech-blue">🚀</div>
+        <div class="absolute bottom-48 left-32 text-7xl opacity-70 floating neon-icon text-tech-purple">⚡</div>
+        <div class="absolute top-1/3 right-1/4 text-6xl opacity-60 floating neon-icon text-tech-cyan">🌐</div>
+        <div class="absolute bottom-1/3 left-1/4 text-7xl opacity-65 floating neon-icon text-tech-blue">💡</div>
+        <div class="absolute top-1/2 left-16 text-5xl opacity-50 floating neon-icon text-tech-purple">🔬</div>
+        <div class="absolute bottom-1/4 right-16 text-6xl opacity-55 floating neon-icon text-tech-cyan">🤖</div>
+    </section>
+
+    <!-- Enhanced Innovation Labs Section -->
+    <section id="innovation" class="py-40 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-32 fade-in">
+                <h2 class="text-7xl md:text-8xl font-black mb-12 space-grotesk neon-text text-tech-purple">
+                    Innovation Labs
+                </h2>
+                <p class="text-3xl text-gray-400 max-w-5xl mx-auto leading-relaxed">
+                    State-of-the-art research facilities where breakthrough technologies are born. 
+                    Collaborate with brilliant minds in spaces designed to inspire unlimited creativity.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-16">
+                <div class="tech-card rounded-4xl p-12 slide-in-left mouse-track">
+                    <div class="text-8xl mb-10 text-center neon-icon text-tech-blue">🧬</div>
+                    <h3 class="text-4xl font-black mb-10 neon-text text-tech-blue space-grotesk text-center">
+                        Biotech Research
+                    </h3>
+                    <p class="text-gray-300 mb-12 leading-relaxed text-xl">
+                        Advanced biotechnology research combining AI with genetic engineering 
+                        to solve humanity's greatest challenges and unlock new possibilities.
+                    </p>
+                    <div class="space-y-8">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400 font-bold text-lg">Gene Sequencing</span>
+                            <span class="text-tech-blue font-bold text-lg neon-text">Active</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400 font-bold text-lg">Drug Discovery</span>
+                            <span class="text-tech-cyan font-bold text-lg neon-text">Running</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400 font-bold text-lg">Clinical Trials</span>
+                            <span class="text-tech-purple font-bold text-lg neon-text">Phase 3</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tech-card rounded-4xl p-12 fade-in mouse-track">
+                    <div class="text-8xl mb-10 text-center neon-icon text-tech-purple">🤖</div>
+                    <h3 class="text-4xl font-black mb-10 neon-text text-tech-purple space-grotesk text-center">
+                        AI Development
+                    </h3>
+                    <p class="text-gray-300 mb-12 leading-relaxed text-xl">
+                        Next-generation artificial intelligence systems with advanced neural networks 
+                        and quantum-enhanced machine learning capabilities.
+                    </p>
+                    <div class="space-y-8">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400 font-bold text-lg">Neural Networks</span>
+                            <span class="text-tech-blue font-bold text-lg neon-text">Training</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400 font-bold text-lg">Deep Learning</span>
+                            <span class="text-tech-cyan font-bold text-lg neon-text">Optimized</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400 font-bold text-lg">AGI Research</span>
+                            <span class="text-tech-purple font-bold text-lg neon-text">Progress</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tech-card rounded-4xl p-12 slide-in-right mouse-track">
+                    <div class="text-8xl mb-10 text-center neon-icon text-tech-cyan">⚛️</div>
+                    <h3 class="text-4xl font-black mb-10 neon-text text-tech-cyan space-grotesk text-center">
+                        Quantum Computing
+                    </h3>
+                    <p class="text-gray-300 mb-12 leading-relaxed text-xl">
+                        Revolutionary quantum processors that harness quantum mechanics 
+                        to solve complex problems at unprecedented speeds and scales.
+                    </p>
+                    <div class="space-y-8">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400 font-bold text-lg">Qubit Stability</span>
+                            <span class="text-tech-blue font-bold text-lg neon-text">99.9%</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400 font-bold text-lg">Quantum Volume</span>
+                            <span class="text-tech-cyan font-bold text-lg neon-text">2048</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400 font-bold text-lg">Error Rate</span>
+                            <span class="text-tech-purple font-bold text-lg neon-text">0.05%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Technology Showcase -->
+    <section id="technology" class="py-40 bg-slate-900/40 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-32 fade-in">
+                <h2 class="text-7xl md:text-8xl font-black mb-12 space-grotesk neon-text text-tech-cyan">
+                    Advanced Technology
+                </h2>
+                <p class="text-3xl text-gray-400 max-w-5xl mx-auto leading-relaxed">
+                    Experience cutting-edge technology that's reshaping the future. 
+                    From holographic displays to neural interfaces, innovation surrounds you.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+                <div class="space-y-12 slide-in-left">
+                    <div class="glass-surface rounded-4xl p-12 mouse-track">
+                        <h3 class="text-5xl font-black neon-text text-tech-blue mb-10 space-grotesk">
+                            Holographic Interfaces
+                        </h3>
+                        <p class="text-gray-300 leading-relaxed text-2xl mb-10">
+                            Interactive 3D holographic displays that respond to gesture and voice commands, 
+                            creating immersive user experiences that blur the line between digital and physical reality.
+                        </p>
+                        <div class="grid grid-cols-2 gap-8">
+                            <div class="translucent-surface rounded-3xl p-8">
+                                <div class="text-4xl font-black text-tech-blue mb-4 neon-text">360°</div>
+                                <div class="text-gray-400 font-bold text-lg">Viewing Angle</div>
+                            </div>
+                            <div class="translucent-surface rounded-3xl p-8">
+                                <div class="text-4xl font-black text-tech-purple mb-4 neon-text">8K</div>
+                                <div class="text-gray-400 font-bold text-lg">Resolution</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-surface rounded-4xl p-12 mouse-track">
+                        <h3 class="text-5xl font-black neon-text text-tech-purple mb-10 space-grotesk">
+                            Neural Networks
+                        </h3>
+                        <p class="text-gray-300 leading-relaxed text-2xl mb-10">
+                            Advanced AI systems that learn and adapt in real-time, 
+                            providing personalized experiences and intelligent automation beyond imagination.
+                        </p>
+                        <div class="progress-bar h-8 mb-8">
+                            <div class="progress-fill" style="width: 96%"></div>
+                        </div>
+                        <div class="text-gray-400 font-bold text-xl">Learning Efficiency: 96%</div>
+                    </div>
+                    
+                    <div class="glass-surface rounded-4xl p-12 mouse-track">
+                        <h3 class="text-5xl font-black neon-text text-tech-cyan mb-10 space-grotesk">
+                            Sustainable Energy
+                        </h3>
+                        <p class="text-gray-300 leading-relaxed text-2xl">
+                            Clean energy solutions powering our entire facility with 
+                            renewable sources and revolutionary energy storage systems.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="holographic-display p-20 slide-in-right mouse-track">
+                    <div class="holo-content text-center">
+                        <!-- Enhanced Central Hub Visualization -->
+                        <div class="relative w-96 h-96 mx-auto mb-16 rotating-3d">
+                            <!-- Outer Ring -->
+                            <div class="absolute inset-0 border-4 border-blue-400/70 rounded-full animate-spin" style="animation-duration: 30s;"></div>
+                            
+                            <!-- Middle Ring -->
+                            <div class="absolute inset-12 border-4 border-purple-400/70 rounded-full animate-spin" style="animation-duration: 22s; animation-direction: reverse;"></div>
+                            
+                            <!-- Inner Ring -->
+                            <div class="absolute inset-24 border-4 border-cyan-400/70 rounded-full animate-spin" style="animation-duration: 15s;"></div>
+                            
+                            <!-- Core -->
+                            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 rounded-full animate-pulse neon-icon"></div>
+                            
+                            <!-- Connection Nodes -->
+                            <div class="absolute top-8 left-1/2 transform -translate-x-1/2 w-10 h-10 bg-blue-400 rounded-full neon-icon"></div>
+                            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-10 h-10 bg-purple-400 rounded-full neon-icon"></div>
+                            <div class="absolute top-1/2 left-8 transform -translate-y-1/2 w-10 h-10 bg-cyan-400 rounded-full neon-icon"></div>
+                            <div class="absolute top-1/2 right-8 transform -translate-y-1/2 w-10 h-10 bg-blue-400 rounded-full neon-icon"></div>
+                            
+                            <!-- Data Streams -->
+                            <div class="absolute top-16 left-16 w-8 h-8 bg-purple-400 rounded-full animate-ping neon-icon"></div>
+                            <div class="absolute bottom-16 right-16 w-8 h-8 bg-cyan-400 rounded-full animate-ping neon-icon" style="animation-delay: 1s;"></div>
+                            <div class="absolute top-16 right-16 w-8 h-8 bg-blue-400 rounded-full animate-ping neon-icon" style="animation-delay: 2s;"></div>
+                            <div class="absolute bottom-16 left-16 w-8 h-8 bg-purple-400 rounded-full animate-ping neon-icon" style="animation-delay: 3s;"></div>
+                        </div>
+                        
+                        <h3 class="text-5xl font-black neon-text text-tech-blue mb-10 space-grotesk">
+                            Interconnected Ecosystem
+                        </h3>
+                        <p class="text-gray-400 space-grotesk mb-12 text-2xl">
+                            Real-time data flow and seamless connectivity across all systems
+                        </p>
+                        
+                        <div class="grid grid-cols-3 gap-10 text-center">
+                            <div>
+                                <div class="text-4xl font-black text-tech-blue mb-4 neon-text">5000+</div>
+                                <div class="text-gray-500 font-bold text-lg">Connected Devices</div>
+                            </div>
+                            <div>
+                                <div class="text-4xl font-black text-tech-purple mb-4 neon-text">99.99%</div>
+                                <div class="text-gray-500 font-bold text-lg">Uptime</div>
+                            </div>
+                            <div>
+                                <div class="text-4xl font-black text-tech-cyan mb-4 neon-text">100TB/s</div>
+                                <div class="text-gray-500 font-bold text-lg">Data Transfer</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Community Section -->
+    <section id="community" class="py-40 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-32 fade-in">
+                <h2 class="text-7xl md:text-8xl font-black mb-12 space-grotesk neon-text text-tech-blue">
+                    Innovation Community
+                </h2>
+                <p class="text-3xl text-gray-400 max-w-5xl mx-auto leading-relaxed">
+                    Join a diverse community of innovators, researchers, and visionaries 
+                    working together to build the future of technology and human potential.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div class="tech-card rounded-4xl p-12 text-center fade-in interactive-element mouse-track">
+                    <div class="text-7xl mb-10 neon-icon text-tech-blue">👩‍💻</div>
+                    <h3 class="text-3xl font-black neon-text text-tech-blue space-grotesk mb-6">
+                        Developers
+                    </h3>
+                    <p class="text-gray-400 mb-8 font-bold text-lg">Building tomorrow's applications</p>
+                    <div class="text-4xl font-black text-tech-blue neon-text">250+</div>
+                </div>
+                
+                <div class="tech-card rounded-4xl p-12 text-center fade-in interactive-element mouse-track">
+                    <div class="text-7xl mb-10 neon-icon text-tech-purple">🔬</div>
+                    <h3 class="text-3xl font-black neon-text text-tech-purple space-grotesk mb-6">
+                        Researchers
+                    </h3>
+                    <p class="text-gray-400 mb-8 font-bold text-lg">Pushing scientific boundaries</p>
+                    <div class="text-4xl font-black text-tech-purple neon-text">180+</div>
+                </div>
+                
+                <div class="tech-card rounded-4xl p-12 text-center fade-in interactive-element mouse-track">
+                    <div class="text-7xl mb-10 neon-icon text-tech-cyan">🎨</div>
+                    <h3 class="text-3xl font-black neon-text text-tech-cyan space-grotesk mb-6">
+                        Designers
+                    </h3>
+                    <p class="text-gray-400 mb-8 font-bold text-lg">Crafting user experiences</p>
+                    <div class="text-4xl font-black text-tech-cyan neon-text">200+</div>
+                </div>
+                
+                <div class="tech-card rounded-4xl p-12 text-center fade-in interactive-element mouse-track">
+                    <div class="text-7xl mb-10 neon-icon text-tech-blue">🚀</div>
+                    <h3 class="text-3xl font-black neon-text text-tech-blue space-grotesk mb-6">
+                        Entrepreneurs
+                    </h3>
+                    <p class="text-gray-400 mb-8 font-bold text-lg">Launching tech startups</p>
+                    <div class="text-4xl font-black text-tech-blue neon-text">150+</div>
+                </div>
+            </div>
+            
+            <!-- Enhanced Collaboration Spaces -->
+            <div class="mt-32 grid grid-cols-1 lg:grid-cols-3 gap-20">
+                <div class="glass-surface rounded-4xl p-16 slide-in-left mouse-track">
+                    <div class="text-6xl mb-10 text-center neon-icon text-tech-purple">🏢</div>
+                    <h3 class="text-4xl font-black neon-text text-tech-purple space-grotesk mb-10 text-center">
+                        Co-working Spaces
+                    </h3>
+                    <p class="text-gray-300 leading-relaxed text-center mb-12 text-xl">
+                        Modern collaborative workspaces equipped with the latest technology 
+                        and designed to foster creativity and breakthrough innovation.
+                    </p>
+                    <div class="space-y-8">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400 font-bold text-lg">Private Offices</span>
+                            <span class="text-tech-purple font-bold text-lg neon-text">50</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400 font-bold text-lg">Meeting Rooms</span>
+                            <span class="text-tech-blue font-bold text-lg neon-text">30</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400 font-bold text-lg">Open Desks</span>
+                            <span class="text-tech-cyan font-bold text-lg neon-text">400</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass-surface rounded-4xl p-16 fade-in mouse-track">
+                    <div class="text-6xl mb-10 text-center neon-icon text-tech-cyan">🎓</div>
+                    <h3 class="text-4xl font-black neon-text text-tech-cyan space-grotesk mb-10 text-center">
+                        Learning Centers
+                    </h3>
+                    <p class="text-gray-300 leading-relaxed text-center mb-12 text-xl">
+                        Advanced learning facilities with VR training modules, 
+                        AI tutors, and hands-on workshops for continuous skill development.
+                    </p>
+                    <div class="space-y-8">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400 font-bold text-lg">VR Training</span>
+                            <span class="text-tech-cyan font-bold text-lg neon-text">Active</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400 font-bold text-lg">AI Tutors</span>
+                            <span class="text-tech-blue font-bold text-lg neon-text">24/7</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400 font-bold text-lg">Workshops</span>
+                            <span class="text-tech-purple font-bold text-lg neon-text">Daily</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass-surface rounded-4xl p-16 slide-in-right mouse-track">
+                    <div class="text-6xl mb-10 text-center neon-icon text-tech-blue">🌐</div>
+                    <h3 class="text-4xl font-black neon-text text-tech-blue space-grotesk mb-10 text-center">
+                        Virtual Collaboration
+                    </h3>
+                    <p class="text-gray-300 leading-relaxed text-center mb-12 text-xl">
+                        Connect with innovators worldwide through our advanced 
+                        virtual reality collaboration platform and holographic meetings.
+                    </p>
+                    <div class="space-y-8">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400 font-bold text-lg">Global Reach</span>
+                            <span class="text-tech-blue font-bold text-lg neon-text">100+ Cities</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400 font-bold text-lg">VR Meetings</span>
+                            <span class="text-tech-purple font-bold text-lg neon-text">500/day</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400 font-bold text-lg">Languages</span>
+                            <span class="text-tech-cyan font-bold text-lg neon-text">50+</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Future Vision Section -->
+    <section id="future" class="py-40 bg-slate-900/40 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-32 fade-in">
+                <h2 class="text-7xl md:text-8xl font-black mb-12 space-grotesk neon-text text-tech-purple">
+                    Future Vision
+                </h2>
+                <p class="text-3xl text-gray-400 max-w-5xl mx-auto leading-relaxed">
+                    Shaping tomorrow's world through breakthrough innovations and sustainable technology. 
+                    Join us in building a brighter, more connected future for all humanity.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+                <div class="space-y-16 slide-in-left">
+                    <div class="glass-surface rounded-4xl p-12 mouse-track">
+                        <h3 class="text-5xl font-black neon-text text-tech-cyan mb-10 space-grotesk flex items-center">
+                            <span class="w-8 h-8 bg-cyan-400 rounded-full mr-8 animate-pulse neon-icon"></span>
+                            Sustainable Innovation
+                        </h3>
+                        <p class="text-gray-300 leading-relaxed text-2xl">
+                            Developing technologies that not only advance human capabilities 
+                            but also protect and restore our planet's precious ecosystem.
+                        </p>
+                    </div>
+                    
+                    <div class="glass-surface rounded-4xl p-12 mouse-track">
+                        <h3 class="text-5xl font-black neon-text text-tech-blue mb-10 space-grotesk flex items-center">
+                            <span class="w-8 h-8 bg-blue-400 rounded-full mr-8 animate-pulse neon-icon"></span>
+                            Global Connectivity
+                        </h3>
+                        <p class="text-gray-300 leading-relaxed text-2xl">
+                            Creating seamless connections between people, devices, and ideas 
+                            across the globe through revolutionary networking technologies.
+                        </p>
+                    </div>
+                    
+                    <div class="glass-surface rounded-4xl p-12 mouse-track">
+                        <h3 class="text-5xl font-black neon-text text-tech-purple mb-10 space-grotesk flex items-center">
+                            <span class="w-8 h-8 bg-purple-400 rounded-full mr-8 animate-pulse neon-icon"></span>
+                            Human Augmentation
+                        </h3>
+                        <p class="text-gray-300 leading-relaxed text-2xl">
+                            Enhancing human potential through brain-computer interfaces, 
+                            biotechnology, and AI-assisted decision making systems.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="holographic-display p-20 slide-in-right mouse-track">
+                    <div class="holo-content">
+                        <!-- Enhanced Future Timeline -->
+                        <div class="space-y-12">
+                            <div class="text-center mb-16">
+                                <h3 class="text-5xl font-black neon-text text-tech-purple mb-8 space-grotesk">
+                                    Innovation Roadmap
+                                </h3>
+                                <p class="text-gray-400 text-2xl">Milestones on our journey to the future</p>
+                            </div>
+                            
+                            <div class="relative">
+                                <!-- Enhanced Timeline Line -->
+                                <div class="absolute left-12 top-0 bottom-0 w-2 bg-gradient-to-b from-blue-400 via-purple-400 to-cyan-400 rounded-full neon-icon"></div>
+                                
+                                <!-- Enhanced Timeline Items -->
+                                <div class="relative flex items-center mb-12">
+                                    <div class="w-8 h-8 bg-blue-400 rounded-full mr-10 neon-icon"></div>
+                                    <div>
+                                        <div class="text-3xl font-black text-tech-blue space-grotesk neon-text">2024</div>
+                                        <div class="text-gray-300 text-xl font-bold">Quantum Computing Breakthrough</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="relative flex items-center mb-12">
+                                    <div class="w-8 h-8 bg-purple-400 rounded-full mr-10 neon-icon"></div>
+                                    <div>
+                                        <div class="text-3xl font-black text-tech-purple space-grotesk neon-text">2025</div>
+                                        <div class="text-gray-300 text-xl font-bold">Neural Interface Launch</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="relative flex items-center mb-12">
+                                    <div class="w-8 h-8 bg-cyan-400 rounded-full mr-10 neon-icon"></div>
+                                    <div>
+                                        <div class="text-3xl font-black text-tech-cyan space-grotesk neon-text">2026</div>
+                                        <div class="text-gray-300 text-xl font-bold">Sustainable City Network</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="relative flex items-center mb-12">
+                                    <div class="w-8 h-8 bg-blue-400 rounded-full mr-10 neon-icon"></div>
+                                    <div>
+                                        <div class="text-3xl font-black text-tech-blue space-grotesk neon-text">2027</div>
+                                        <div class="text-gray-300 text-xl font-bold">Global AI Collaboration</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="relative flex items-center">
+                                    <div class="w-8 h-8 bg-purple-400 rounded-full mr-10 neon-icon"></div>
+                                    <div>
+                                        <div class="text-3xl font-black text-tech-purple space-grotesk neon-text">2030</div>
+                                        <div class="text-gray-300 text-xl font-bold">Interplanetary Tech Hub</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Footer -->
+    <footer class="bg-slate-900/70 border-t border-blue-400/30 py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-20">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="text-6xl font-black neon-text text-tech-blue mb-10 space-grotesk">
+                        NexaTech HUB
+                    </div>
+                    <p class="text-gray-400 mb-12 leading-relaxed text-2xl">
+                        Where innovation meets possibility. Join us in building the future 
+                        through cutting-edge technology and collaborative innovation.
+                    </p>
+                    <div class="flex space-x-10">
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors neon-icon">
+                            <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors neon-icon">
+                            <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors neon-icon">
+                            <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-3xl font-black mb-10 space-grotesk neon-text text-tech-purple">Innovation</h3>
+                    <ul class="space-y-6 text-gray-400">
+                        <li><a href="#innovation" class="hover:text-blue-400 transition-colors font-bold text-xl">Research Labs</a></li>
+                        <li><a href="#technology" class="hover:text-blue-400 transition-colors font-bold text-xl">Technology</a></li>
+                        <li><a href="#community" class="hover:text-blue-400 transition-colors font-bold text-xl">Community</a></li>
+                        <li><a href="#future" class="hover:text-blue-400 transition-colors font-bold text-xl">Future Vision</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors font-bold text-xl">Partnerships</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors font-bold text-xl">Careers</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-3xl font-black mb-10 space-grotesk neon-text text-tech-cyan">Connect</h3>
+                    <ul class="space-y-6 text-gray-400">
+                        <li><a href="#" class="hover:text-cyan-400 transition-colors font-bold text-xl">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-cyan-400 transition-colors font-bold text-xl">Virtual Tour</a></li>
+                        <li><a href="#" class="hover:text-cyan-400 transition-colors font-bold text-xl">Events</a></li>
+                        <li><a href="#" class="hover:text-cyan-400 transition-colors font-bold text-xl">Newsletter</a></li>
+                        <li><a href="#" class="hover:text-cyan-400 transition-colors font-bold text-xl">Support</a></li>
+                        <li><a href="#" class="hover:text-cyan-400 transition-colors font-bold text-xl">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-20 pt-12 text-center">
+                <p class="text-gray-400 space-grotesk text-2xl">
+                    &copy; 2024 NexaTech Hub. All rights reserved. 
+                    <span class="neon-text text-tech-blue font-bold">Building the future together</span> 🚀
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Enhanced Network Background with Data Streams
+        function createEnhancedNetworkBackground() {
+            const networkBg = document.getElementById('networkBg');
+            const nodeCount = 30;
+            const nodes = [];
+            
+            // Create enhanced nodes
+            for (let i = 0; i < nodeCount; i++) {
+                const node = document.createElement('div');
+                node.className = 'network-node';
+                node.style.left = Math.random() * 100 + '%';
+                node.style.top = Math.random() * 100 + '%';
+                node.style.animationDelay = Math.random() * 5 + 's';
+                networkBg.appendChild(node);
+                nodes.push({
+                    element: node,
+                    x: parseFloat(node.style.left),
+                    y: parseFloat(node.style.top)
+                });
+            }
+            
+            // Create data streams between nodes
+            for (let i = 0; i < nodes.length; i++) {
+                for (let j = i + 1; j < nodes.length; j++) {
+                    const distance = Math.sqrt(
+                        Math.pow(nodes[i].x - nodes[j].x, 2) + 
+                        Math.pow(nodes[i].y - nodes[j].y, 2)
+                    );
+                    
+                    if (distance < 40) {
+                        const stream = document.createElement('div');
+                        stream.className = 'data-stream';
+                        
+                        const angle = Math.atan2(nodes[j].y - nodes[i].y, nodes[j].x - nodes[i].x);
+                        const length = distance;
+                        
+                        stream.style.left = nodes[i].x + '%';
+                        stream.style.top = nodes[i].y + '%';
+                        stream.style.width = length + 'vw';
+                        stream.style.transform = `rotate(${angle}rad)`;
+                        stream.style.transformOrigin = '0 50%';
+                        stream.style.animationDelay = Math.random() * 8 + 's';
+                        
+                        networkBg.appendChild(stream);
+                    }
+                }
+            }
+            
+            // Create data packets
+            for (let i = 0; i < 15; i++) {
+                const packet = document.createElement('div');
+                packet.className = 'data-packet';
+                packet.style.top = Math.random() * 100 + '%';
+                packet.style.animationDelay = Math.random() * 12 + 's';
+                networkBg.appendChild(packet);
+            }
+        }
+
+        // Enhanced Floating Particles
+        function createEnhancedFloatingParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleTypes = ['particle-blue', 'particle-purple', 'particle-cyan'];
+            
+            for (let i = 0; i < 75; i++) {
+                const particle = document.createElement('div');
+                particle.className = `particle ${particleTypes[Math.floor(Math.random() * particleTypes.length)]}`;
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Enhanced Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Enhanced Intersection Observer for Fade-in Animations
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Enhanced Animated Counter for Stats
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            
+            counters.forEach(counter => {
+                const target = counter.textContent;
+                const isInfinite = target.includes('∞');
+                
+                if (!isInfinite) {
+                    const numericTarget = parseInt(target.replace(/\D/g, ''));
+                    let current = 0;
+                    const increment = numericTarget / 80;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= numericTarget) {
+                            counter.textContent = target;
+                            clearInterval(timer);
+                        } else {
+                            counter.textContent = Math.floor(current) + target.replace(/\d/g, '').replace(/\+/g, '+');
+                        }
+                    }, 30);
+                }
+            });
+        }
+
+        // Enhanced Mouse-Tracking Holographics
+        document.querySelectorAll('.mouse-track').forEach(element => {
+            element.addEventListener('mouseenter', (e) => {
+                const rect = element.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                element.style.background = `
+                    radial-gradient(circle at ${x}px ${y}px, 
+                        rgba(0, 212, 255, 0.3) 0%,
+                        rgba(139, 92, 246, 0.2) 30%,
+                        rgba(6, 182, 212, 0.25) 70%,
+                        transparent 100%)
+                `;
+                element.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            
+            element.addEventListener('mousemove', (e) => {
+                const rect = element.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                element.style.background = `
+                    radial-gradient(circle at ${x}px ${y}px, 
+                        rgba(0, 212, 255, 0.3) 0%,
+                        rgba(139, 92, 246, 0.2) 30%,
+                        rgba(6, 182, 212, 0.25) 70%,
+                        transparent 100%)
+                `;
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                element.style.background = '';
+                element.style.transform = '';
+            });
+        });
+
+        // Enhanced Tech Button Ripple Effect
+        document.querySelectorAll('.tech-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 1000);
+            });
+        });
+
+        // Enhanced Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('nav');
+            const scrolled = window.pageYOffset;
+            
+            if (scrolled > 100) {
+                navbar.style.background = 'rgba(15, 23, 42, 0.95)';
+                navbar.style.backdropFilter = 'blur(35px)';
+                navbar.style.borderColor = 'rgba(0, 212, 255, 0.6)';
+                navbar.style.boxShadow = '0 15px 40px rgba(0, 212, 255, 0.25)';
+            } else {
+                navbar.style.background = 'rgba(15, 23, 42, 0.8)';
+                navbar.style.backdropFilter = 'blur(30px)';
+                navbar.style.borderColor = 'rgba(0, 212, 255, 0.3)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // Initialize Everything
+        window.addEventListener('load', () => {
+            createEnhancedNetworkBackground();
+            createEnhancedFloatingParticles();
+            
+            // Trigger counter animation when stats section is visible
+            const statsSection = document.querySelector('#home');
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                        statsObserver.unobserve(entry.target);
+                    }
+                });
+            });
+            
+            if (statsSection) {
+                statsObserver.observe(statsSection);
+            }
+        });
+
+        // Enhanced CSS for ripple effect
+        const style = document.createElement('style');
+        style.textContent = `
+            .ripple {
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.5);
+                transform: scale(0);
+                animation: ripple-animation 1s linear;
+                pointer-events: none;
+            }
+            
+            @keyframes ripple-animation {
+                to {
+                    transform: scale(5);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Performance optimization with throttling
+        let ticking = false;
+        
+        function updateAnimations() {
+            ticking = false;
+        }
+        
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateAnimations);
+                ticking = true;
+            }
+        }
+        
+        window.addEventListener('scroll', requestTick, { passive: true });
+
+        // Enhanced interactive element hover effects
+        document.querySelectorAll('.interactive-element').forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                element.style.transform = 'translateY(-12px) scale(1.03)';
+                element.style.boxShadow = '0 25px 50px rgba(0, 212, 255, 0.4)';
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                element.style.transform = '';
+                element.style.boxShadow = '';
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96812e2af2567211',t:'MTc1NDAwNzczOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
